@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova | Τηλεόραση & Internet</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/256/0/191.png" type="image/png">
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-bottom: 50px; 
+            margin-bottom: 0; 
+            text-align: center;
+        }
+
+        header {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-bottom: 2px solid #000000;
+        }
+
+        nav {
+            background-color: #fcfcfc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            padding: 10px;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            color: rgb(255, 255, 255);
+            background-color: #4e4e4e;
+        }
+
+        section {
+            padding: 20px;
+            background-color: #fff;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        form {
+                text-align: center;
+                margin: auto;
+        }
+
+        fieldset {
+            display: inline-block;
+            text-align: left;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        select,
+        input {
+            margin-bottom: 10px;
+        }
+
+        #findme {
+            margin-top: 50px; 
+        }
+
+        #mybtn {
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #4e4e4e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            border-top: 2px solid #000000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/Novanewlogo21.png" alt="Nova Logo" style="width: 100%; max-width: 800px; margin: 0 auto;">
+        <p>Τηλεόραση & Internet</p>
+    </header>    
+
+    <nav>
+        <li style="display: inline-block">
+            <a href="home.html">Αρχική</a>
+        </li>
+        <li style="display: inline-block">
+            <a href="products.html">Κινητά τηλέφωνα</a>
+        </li>
+        <li style="display: inline-block">
+            <a href="challenge.html">Challenge</a>
+        </li>
+        <li style="display: inline-block">
+            <a href="signup.html">Εγγραφή</a>
+        </li>
+        <li style="display: inline-block">
+            <a href="creatorsinfo.html">Πληροφορίες</a>
+        </li>
+    </nav>
+
+    <form id="f2" method="post" action="store.php" onsubmit="return submitForm();">
+        <fieldset>
+            <legend>Προσωπικά Στοιχεία</legend>
+    
+            <p title="Συμπληρώστε το όνομα σας με ελληνικά γράμματα"><label for="firstname"> Όνομα:</label>
+                <input type="text" id="firstname" name="firstname"></p>
+    
+            <p title="Συμπληρώστε το επίθετό σας με ελληνικά γράμματα"><label for="lastname"> Επώνυμο:</label>
+                <input type="text" id="lastname" name="lastname"></p><br>
+    
+            Τίτλος:<select name="title">
+                <option>Κύριος</option>
+                <option>Κυρία</option>
+            </select>
+    
+            <p title="Επιλέξτε τη χώρα κατοικίας σας">
+                <label for="residence-country">Χώρα Κατοικίας:</label>
+                <select id="residence-country" name="residence-country"></select>
+            </p>
+    
+            <script>
+                var residenceCountryDropdown = document.getElementById("residence-country");
+    
+                var residenceCountries = [
+                    "Αλβανία", "Αυστρία", "Βέλγιο", "Βουλγαρία", "Γαλλία", "Γερμανία", "Δανία", "Ελλάδα", "Εσθονία",
+                    "Ηνωμένο Βασίλειο", "Ισπανία", "Ιταλία", "Κύπρος", "Λετονία", "Λιθουανία", "Τουρκία"
+                ];
+    
+                residenceCountries.forEach(function (country) {
+                    var option = document.createElement("option");
+                    option.value = country;
+                    option.text = country;
+                    residenceCountryDropdown.add(option);
+                });
+            </script>
+            
+            <p title="Συμπληρώστε την υπηκοοτητά σας">
+                <label for="nationality">Υπηκοότητα:</label>
+                <select id="nationality" name="nationality"></select>
+            </p>
+            
+            <script>
+                var countryDropdown = document.getElementById("country");
+                var nationalityDropdown = document.getElementById("nationality");
+            
+                var countries = [
+                    "Αλβανία", "Αυστρία", "Βέλγιο", "Βουλγαρία", "Γαλλία", "Γερμανία", "Δανία", "Ελλάδα", "Εσθονία",
+                    "Ηνωμένο Βασίλειο", "Ισπανία", "Ιταλία", "Κύπρος", "Λετονία", "Λιθουανία", "Τουρκία"
+                ];
+            
+                var nationalities = [
+                    "Αλβανική", "Αυστριακή", "Βελγική", "Βουλγαρική", "Γαλλική", "Γερμανική", "Δανική", "Ελληνική",
+                    "Εσθονική", "Ηνωμένο Βασίλειο", "Ισπανική", "Ιταλική", "Κυπριακή", "Λετονική", "Λιθουανική", "Τουρκική"
+                ];
+            
+                nationalities.forEach(function (nationality) {
+                    var option = document.createElement("option");
+                    option.value = nationality;
+                    option.text = nationality;
+                    nationalityDropdown.add(option);
+                });
+            </script>
+    
+            <p title="Συμπληρώστε την οικογενειακή σας κατάσταση"><label for="family">Οικογενειακή Κατάσταση:</label>
+                <select id="family" name="family">
+                    <option>Έγγαμος</option>
+                    <option>Άγαμος</option>
+                    <option>Διαζευγμένος</option>
+                </select><br></p>
+                
+                <p title="Συμπληρώστε την ημερομηνία γέννησης σας">
+                    <label for="day">Ημερομηνία Γέννησης:</label>
+                    <select id="day" name="day"></select>
+                
+                    <select id="month" name="month">
+                        <option value="1">Ιανουάριος</option>
+                        <option value="2">Φεβρουάριος</option>
+                        <option value="3">Μάρτιος</option>
+                        <option value="4">Απρίλιος</option>
+                        <option value="5">Μάιος</option>
+                        <option value="6">Ιούνιος</option>
+                        <option value="7">Ιούλιος</option>
+                        <option value="8">Αύγουστος</option>
+                        <option value="9">Σεπτέμβριος</option>
+                        <option value="10">Οκτώβριος</option>
+                        <option value="11">Νοέμβριος</option>
+                        <option value="12">Δεκέμβριος</option>
+                    </select>
+                
+                    <select id="year" name="year"></select>
+                </p>
+                
+                <script>
+                    var dayDropdown = document.getElementById("day");
+                    var yearDropdown = document.getElementById("year");
+                
+                    for (var i = 1; i <= 31; i++) {
+                        var option = document.createElement("option");
+                        option.value = i;
+                        option.text = i;
+                        dayDropdown.add(option);
+                    }
+                
+                    for (var i = 1900; i <= 2024; i++) {
+                        var option = document.createElement("option");
+                        option.value = i;
+                        option.text = i;
+                        yearDropdown.add(option);
+                    }
+                </script>     
+    
+            <br><br><br><br>
+    
+            <h3>Στοιχεία επικοινωνίας</h3>
+    
+            <p title="Συμπληρώστε τη διεύθυνσή σας"><label for="address"> Διεύθυνση:</label>
+                <input type="text" id="address"required>
+            </p>
+    
+            <p title="Συμπληρώστε την πόλη σας"><label for="town">Πόλη:</label>
+                <input type="text" id="town">
+            </p>
+    
+            <p title="Συμπληρώστε την περιοχή/περιφέρειά σας"><label for="region"> Περιοχή/Περιφέρεια:</label>
+                <input type="text" id="region"><br>
+            </p>
+    
+            <p title="Συμπληρώστε τον ταχυδρομικό σας κώδικα"><label for="postalcode"> Ταχ. Κώδικας:</label>
+                <input type="text" id="postalcode" name="postalcode" maxlength="5" oninput="this.value = this.value.replace(/[^0-9]/g, '')"><br>
+            </p>
+    
+            <p title="Συμπληρώστε το τηλέφωνό σας"><label for="phonenumber"> Τηλέφωνο:</label>
+                <input type="text" id="phonenumber" name="phonenumber" maxlength="10" oninput="this.value = this.value.replace(/[^0-9]/g, '')"><br>
+            </p>
+    
+            <p title="Συμπληρώστε τη διεύθυνση ηλεκτρονικού σας ταχυδρομίου"><label for="mail"> Διεύθυνση Ηλεκτρονικού Ταχυδρομίου:</label>
+                <input type="text" id="mail">
+            </p>
+    
+            <br><br><br><br>
+    
+            <h3>Δημιουργία κωδικού πρόσβασης</h3>
+
+            <p title="Συμπληρώστε το όνομα χρήστη σας"><label for="username"> Όνομα Χρήστη:</label>
+                <input type="text" id="username" name="username" placeholder="*απαραίτητο" required><br></p>
+
+            <p title="Συμπληρώστε τον κωδικό πρόσβασης σας"><label for="password"> Κωδικός Πρόσβασης:</label>
+                    <input type="text" id="password" name="password" placeholder="*απαραίτητο" required><br></p>
+    
+            <br><br>
+    
+            Έχω διαβάσει και αποδέχομαι τους Όρους Χρήστη & Προϋποθέσεις 
+            <input type="checkbox" name="termsandconditions">
+    
+            <br><br><br><br>
+    
+            <input type="reset" value="Καθαρισμός">
+            <input type="submit" value="Αποθήκευση">
+        </fieldset>
+    </form>
+
+    <script>
+        function submitForm() {
+            var formData = new FormData(document.getElementById('f2'));
+    
+            fetch('store.php', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Επιτυχής Αποθήκευση!");
+            })
+            .catch(error => {
+                console.error('Σφάλμα fetch:', error);
+            });
+    
+            return false; 
+        }
+    </script>
+
+    <br><br><br><br>
+    <h2>Αναζήτηση Χρήστη</h2>
+    <form id="findme" method="post">
+        <label for="findmail">Διεύθυνση Ηλεκτρονικού Ταχυδρομίου:</label>
+        <input type="text" id="findmail" name="findmail">
+        <input type="button" id="mybtn" name="mybtn" value="Αναζήτηση">
+    </form>
+
+    <script>
+        document.getElementById('mybtn').addEventListener('click', function () {
+            var findmail = document.getElementById('findmail').value;
+        
+            fetch('search.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'findmail=' + findmail,
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Αποτελέσματα Αναζήτησης για τη Διεύθυνση Ηλεκτρονικού Ταχυδρομίου:\n" + data);
+            })
+            .catch(error => {
+                console.error('Σφάλμα fetch:', error);
+            });
+        
+            event.preventDefault();
+        });               
+    </script>        
+        
+
+    <footer>
+        <p>&copy; 2024 Nova. Με επιφύλαξη παντός δικαιώματος.</p>
+    </footer>

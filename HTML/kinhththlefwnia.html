@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Smartphone_icon_-_Noun_Project_283536.svg/800px-Smartphone_icon_-_Noun_Project_283536.svg.png" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <style>
+        body { 
+            text-indent: 3em;           
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 5px;
+            border: 5px solid #0400ff;
+
+        }
+
+        header {
+            background-color: #4CAF55;
+            padding: 15px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            display: inline-block;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #0105fc;
+        }
+
+        /* Στυλ για τη φόρμα εγγραφής */
+        #registration-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #registration-form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #registration-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #registration-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #registration-form button:hover {
+            background-color: #45a049;
+        }
+
+        #sign-in-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #sign-in-form label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        #sign-in-form input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #sign-in-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        #sign-in-form button:hover {
+            background-color: #45a049;
+        }
+
+        .main-content {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .highlighted-paragraph {
+            background-color: #ffd700;
+            font-size: 25px;
+            text-align: right;
+            padding: 10px;
+        }
+
+        .centered-content {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        ol {
+            text-align: center;
+            display: inline-block;
+        }
+
+        .achievements {
+            margin: 20px;
+        }
+
+        .achievements ol {
+            list-style: upper-roman;
+            font-size: 16px;
+        }
+
+        #image1 {
+            width: 50px; 
+            height: auto;
+        }
+
+        #image2 {
+            width: 25px; 
+            height: auto;
+        }
+
+        .map-content {
+            text-align: center;
+        }
+
+        #map {
+            width: 300px; /* Προσαρμογή του πλάτους του χάρτη */
+            height: auto; /* Κατάλληλη ρύθμιση για διατήρηση της αναλογίας πλάτους/ύψους */
+            cursor: pointer; /* Αλλαγή του cursor σε pointer όταν περνά πάνω από το χάρτη */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+        }
+    </style>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Προσθήκη νέου div για τη φόρμα και overlay -->
+        <div id="registration-form" style="display: none;" action="save_registration.php" method="post">
+            <h2>Φόρμα Εγγραφής</h2>
+            <form action="#" method="post">
+                <label for="fname">Όνομα:</label>
+                <input type="text" id="fname" name="fname" required><br>
+
+                <label for="lname">Επώνυμο:</label>
+                <input type="text" id="lname" name="lname" required><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="password">Κωδικός:</label>
+                <input type="text" id="password" name="password" required><br>
+
+                <button type="submit">Υποβολή</button>
+            </form>
+
+            <button onclick="closeRegistrationForm()">Κλείσιμο</button>
+        </div>
+        
+        <div id="sign-in-form" style="display: none;" action="save_registration.php" method="post">
+            <h2>Φόρμα Εγγραφής</h2>
+            <form action="#" method="post">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="password">Κωδικός:</label>
+                <input type="text" id="password" name="password" required><br>
+
+                <button type="submit">Υποβολή</button>
+            </form>
+
+            <button onclick="closeSignInForm()">Κλείσιμο</button>
+        </div>
+<nav>
+    <ul>
+        <li><a href="index.php">Κεντρική</a></li>
+        <li><a href="#" onclick="openRegistrationForm()">Εγγραφή</a></li>
+        <li><a href="stores.php">Challenge</a></li>
+        <li><a href="contact.php">Πληροφορίες</a></li>
+        <li><a href="#" onclick="openSignInForm()">Σύνδεση</a></li>
+    </ul>
+</nav>
+
+    </header>
+
+    <div id="map" style="height: 400px;"></div>
+
+    <section class="map-content"> 
+        <h2>
+            <strong>Χάρτης καταστημάτων</strong>
+        </h2>
+    </section>
+        <!-- Ενσωμάτωση του JavaScript για το χάρτη -->
+    <script>
+         // Δημιουργία του χάρτη
+         var map = L.map('map').setView([38.5, 23.5], 6); // Αρχικές συντεταγμένες και επίπεδο ζουμ
+
+         // Προσθήκη του χάρτη OpenStreetMap (OSM)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        var cosmoteStores = [
+            { name: 'Cosmote Αθήνα', location: [37.9838, 23.7275], hours: "09:00 - 17:00", phone: " 21 0637 2808"},
+            { name: 'Cosmote Θεσσαλονίκη', location: [40.6401, 22.9444], hours: "09:00 - 17:00", phone: "231 047 2818"},
+            { name: 'Cosmote Πάτρα', location: [38.2544, 21.7371], hours: "09:00 - 17:00", phone: "261 042 7701"},
+            { name: 'Cosmote Ηράκλειο', location: [35.3375, 25.1333], hours: "09:00 - 17:00", phone: "281 119 7000"},
+            { name: 'Cosmote Λάρισα', location: [39.6392, 22.4197], hours: "09:00 - 17:00", phone: " 241 025 2742"}
+        ];
+
+    cosmoteStores.forEach(function(store) {
+        var popupContent = '<div>' +
+      '<h3>' + store.name + '</h3>' +
+      '<p><strong>Ώρες λειτουργίας:</strong> ' + store.hours + '</p>' +
+      '<p><strong>Τηλέφωνο:</strong> ' + store.phone + '</p>' +
+      '</div>';
+    
+    L.marker(store.location).addTo(map)
+      .bindPopup(popupContent);
+  });
+    </script>  
+    <section class="main-content">
+        <h3>Καλώς ήρθατε στον κόσμο της κινητής τηλεφωνίας!</h3>
+        <p>
+            Αυτή είναι μια παράγραφος με <strong>έντονα γράμματα</strong> και <em>έμφαση</em>.
+            Μπορείτε να προσθέσετε <del>διαγραμμένες φράσεις</del> και φράσεις που έχουν εισαχθεί πρόσφατα.
+        </p>
+        <div class="highlighted-paragraph">
+            Αυτή η παράγραφος έχει χρώμα υπόβαθρου και στοιχεία μορφοποίησης.
+        </div>
+        <hr>
+
+        <div class="achievements">
+            <div class="centered-content">
+                <h3>Σπουδαιότερα Έργα</h3>
+                <br><br><br><br><br>
+                <ol style="list-style-type: lower-roman;">
+                    <li>Αθλητικές Επιδόσεις</li>
+                    <li>Σχολικά Θεατρικά Έργα</li>
+                    <li>Άλλα Επιτεύγματα</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var isOpenForm = false;
+        var openFormId = '';  // Προσθήκη μιας μεταβλητής για να αποθηκεύει το id της ανοικτής φόρμας
+
+        function openForm(formId) {
+         // Κλείσιμο της ήδη ανοικτής φόρμας, αν υπάρχει
+         if (isOpenForm && openFormId !== formId) {
+             document.getElementById(openFormId).style.display = "none";
+          }
+
+            // Άνοιγμα της νέας φόρμας
+          document.getElementById(formId).style.display = "block";
+          document.getElementById("overlay").style.display = "block";
+          isOpenForm = true;
+          openFormId = formId;  // Αποθήκευση του id της νέας ανοικτής φόρμας
+        }
+
+        function closeForm(formId) {
+           document.getElementById(formId).style.display = "none";
+           document.getElementById("overlay").style.display = "none";
+          isOpenForm = false;
+          openFormId = '';  // Εκκαθάριση της μεταβλητής όταν κλείνει η φόρμα
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+        var registrationForm = document.getElementById('registration-form');
+
+        registrationForm.addEventListener('submit', function (event) {
+        event.preventDefault(); // Αποτροπή της προεπιλεγμένης συμπεριφοράς φόρμας
+
+        // Εμφάνιση του popup με καλωσόρισμα
+        alert('Τα στοιχεία σας αποθηκεύτηκαν επιτυχώς. Καλωσήρθατε!');
+        });
+    });
+    </script>
+
+     <!-- Δυνατότητα αποστολής email -->
+     <p>Στείλτε μας email: <a href="mailto:info@kinhththlefwnia.com?subject=Πώς μπορώ να σας βοηθήσω;">Επικοινωνήστε</a></p>
+
+    <footer>
+        <p>&copy; <?php echo date("Y"); ?> Κινητή Τηλεφωνία. Με εκτίμηση...</p>
+    </footer>
+</body>
+</html>

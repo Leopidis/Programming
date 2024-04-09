@@ -1,0 +1,17 @@
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\bin\Debug\net6.0-windows\AtomikhErgasia.exe
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\bin\Debug\net6.0-windows\AtomikhErgasia.deps.json
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\bin\Debug\net6.0-windows\AtomikhErgasia.runtimeconfig.json
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\bin\Debug\net6.0-windows\AtomikhErgasia.dll
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\bin\Debug\net6.0-windows\AtomikhErgasia.pdb
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.Form1.resources
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.Properties.Resources.resources
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.csproj.GenerateResource.cache
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.AssemblyInfoInputs.cache
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.AssemblyInfo.cs
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.csproj.CoreCompileInputs.cache
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.dll
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\refint\AtomikhErgasia.dll
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.pdb
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\AtomikhErgasia.genruntimeconfig.cache
+C:\Users\leonl\Desktop\Programming\C#\AtomikhErgasia\obj\Debug\net6.0-windows\ref\AtomikhErgasia.dll
